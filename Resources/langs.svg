@@ -1,0 +1,144 @@
+<svg viewBox="0 0 500 280" width="100%" height="280px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+      <![CDATA[
+        @font-face {
+            font-family: 'Ubuntu';
+            src: url('./Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+      
+        .banner-bg { fill: #0b0c10; rx: 10px; ry: 10px; }
+      
+        /* Blob Animations */
+        .blob1 { fill: #00E5FF; opacity: 0.6; animation: float1 12s infinite ease-in-out alternate; transform-origin: center; }
+        .blob2 { fill: #B141FF; opacity: 0.6; animation: float2 14s infinite ease-in-out alternate; transform-origin: center; }
+        .blob3 { fill: #FF2E93; opacity: 0.5; animation: float3 16s infinite ease-in-out alternate; transform-origin: center; }
+
+        @keyframes float1 { 0% { transform: translate(0px, 0px); } 50% { transform: translate(60px, -20px); } 100% { transform: translate(-30px, 30px); } }
+        @keyframes float2 { 0% { transform: translate(0px, 0px); } 50% { transform: translate(-50px, 30px); } 100% { transform: translate(40px, -30px); } }
+        @keyframes float3 { 0% { transform: translate(0px, 0px); } 100% { transform: translate(70px, 15px); } }
+
+        /* Typography and UI */
+        .lang-text { font-family: 'Ubuntu', sans-serif; font-size: 20px; font-weight: 400; fill: #ffffff; text-anchor: start; dominant-baseline: central; }
+        .lang-bold { font-weight: 700; }
+        
+        .bars-full { fill: #00E5FF; }
+        .bars-empty { fill: rgba(255, 255, 255, 0.15); }
+
+        /* Floating Letters Animations */
+        .letter-float {
+            transform-box: fill-box;
+            transform-origin: center;
+            opacity: 0.12;
+            fill: #ffffff;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 700;
+        }
+        .l-1 { animation: floatL1 14s infinite ease-in-out alternate; }
+        .l-2 { animation: floatL2 18s infinite ease-in-out alternate-reverse; }
+        .l-3 { animation: floatL3 16s infinite ease-in-out alternate; }
+
+        @keyframes floatL1 { 
+            0% { transform: translate(0px, 0px) rotate(0deg); } 
+            100% { transform: translate(-15px, -25px) rotate(15deg); } 
+        }
+        @keyframes floatL2 { 
+            0% { transform: translate(0px, 0px) rotate(0deg); } 
+            100% { transform: translate(20px, 15px) rotate(-20deg); } 
+        }
+        @keyframes floatL3 { 
+            0% { transform: translate(0px, 0px) rotate(0deg); } 
+            100% { transform: translate(-10px, 20px) rotate(10deg); } 
+        }
+      ]]>
+    </style>
+    
+    <filter id="blurFilter" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="24" />
+    </filter>
+
+    <clipPath id="bannerClip1">
+      <rect width="500" height="280" rx="10" ry="10" />
+    </clipPath>
+    
+    <g id="mobileBars">
+        <rect class="bars-empty" rx="1" x="0" y="20" width="6" height="6"/>
+        <rect class="bars-empty" rx="1" x="10" y="16" width="6" height="10"/>
+        <rect class="bars-empty" rx="1" x="20" y="12" width="6" height="14"/>
+        <rect class="bars-empty" rx="1" x="30" y="8" width="6" height="18"/>
+        <rect class="bars-empty" rx="1" x="40" y="4" width="6" height="22"/>
+        <rect class="bars-empty" rx="1" x="50" y="0" width="6" height="26"/>
+    </g>
+  </defs>
+
+  <g clip-path="url(#bannerClip1)">
+    <rect class="banner-bg" width="500" height="280" />
+
+    <g filter="url(#blurFilter)">
+      <circle class="blob1" cx="100" cy="80" r="80" />
+      <circle class="blob2" cx="250" cy="220" r="100" />
+      <circle class="blob3" cx="400" cy="50" r="90" />
+    </g>
+    
+    <g class="letter-float">
+        <text x="30" y="60" font-size="50" class="l-1">ض</text>
+        <text x="120" y="240" font-size="60" class="l-2">Ä</text>
+        <text x="200" y="80" font-size="45" class="l-3">ç</text>
+        <text x="320" y="250" font-size="70" class="l-1">ش</text>
+        <text x="380" y="120" font-size="55" class="l-2">W</text>
+        <text x="440" y="210" font-size="50" class="l-3">Ö</text>
+        <text x="260" y="140" font-size="80" class="l-1">ع</text>
+        <text x="60" y="160" font-size="40" class="l-2">Æ</text>
+        <text x="160" y="130" font-size="35" class="l-3">œ</text>
+        <text x="90" y="100" font-size="40" class="l-1">ß</text>
+        <text x="460" y="90" font-size="35" class="l-2">É</text>
+        <text x="220" y="270" font-size="55" class="l-3">غ</text>
+    </g>
+
+    <rect width="500" height="280" fill="#0b0c10" opacity="0.3" rx="10" ry="10"/>
+
+    <g transform="translate(30, 60)">
+        <g transform="translate(0, 0)">
+            <text class="lang-text"><tspan class="lang-bold">Arabic</tspan> (Native)</text>
+            <g transform="translate(380, -13)">
+                <use xlink:href="#mobileBars"/>
+                <g class="bars-full">
+                    <rect rx="1" x="0" y="20" width="6" height="6"/><rect rx="1" x="10" y="16" width="6" height="10"/><rect rx="1" x="20" y="12" width="6" height="14"/><rect rx="1" x="30" y="8" width="6" height="18"/><rect rx="1" x="40" y="4" width="6" height="22"/><rect rx="1" x="50" y="0" width="6" height="26"/>
+                </g>
+            </g>
+        </g>
+        
+        <g transform="translate(0, 50)">
+            <text class="lang-text"><tspan class="lang-bold">English</tspan> (C1)</text>
+            <g transform="translate(380, -13)">
+                <use xlink:href="#mobileBars"/>
+                <g class="bars-full">
+                    <rect rx="1" x="0" y="20" width="6" height="6"/><rect rx="1" x="10" y="16" width="6" height="10"/><rect rx="1" x="20" y="12" width="6" height="14"/><rect rx="1" x="30" y="8" width="6" height="18"/><rect rx="1" x="40" y="4" width="6" height="22"/>
+                </g>
+            </g>
+        </g>
+
+        <g transform="translate(0, 100)">
+            <text class="lang-text"><tspan class="lang-bold">French</tspan> (B1)</text>
+            <g transform="translate(380, -13)">
+                <use xlink:href="#mobileBars"/>
+                <g class="bars-full">
+                    <rect rx="1" x="0" y="20" width="6" height="6"/><rect rx="1" x="10" y="16" width="6" height="10"/><rect rx="1" x="20" y="12" width="6" height="14"/>
+                </g>
+            </g>
+        </g>
+
+        <g transform="translate(0, 150)">
+            <text class="lang-text"><tspan class="lang-bold">German</tspan> (A2)</text>
+            <g transform="translate(380, -13)">
+                <use xlink:href="#mobileBars"/>
+                <g class="bars-full">
+                    <rect rx="1" x="0" y="20" width="6" height="6"/><rect rx="1" x="10" y="16" width="6" height="10"/>
+                </g>
+            </g>
+        </g>
+    </g>
+  </g>
+</svg>

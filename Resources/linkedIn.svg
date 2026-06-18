@@ -1,0 +1,53 @@
+<svg viewBox="0 0 550 70" width="100%" height="70px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+        @font-face {
+            font-family: 'Ubuntu';
+            src: url('./Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+      
+        .banner-bg { fill: #0b0c10; rx: 10px; ry: 10px; }
+      
+        .blob1 { fill: #00E5FF; opacity: 0.6; animation: float1_s 12s infinite ease-in-out alternate; transform-origin: center; }
+        .blob2 { fill: #B141FF; opacity: 0.6; animation: float2_s 14s infinite ease-in-out alternate; transform-origin: center; }
+        .blob3 { fill: #FF2E93; opacity: 0.5; animation: float3_s 16s infinite ease-in-out alternate; transform-origin: center; }
+
+        @keyframes float1_s { 0% { transform: translate(0px, 0px); } 50% { transform: translate(80px, -10px); } 100% { transform: translate(-30px, 15px); } }
+        @keyframes float2_s { 0% { transform: translate(0px, 0px); } 50% { transform: translate(-60px, 15px); } 100% { transform: translate(50px, -15px); } }
+        @keyframes float3_s { 0% { transform: translate(0px, 0px); } 100% { transform: translate(90px, 5px); } }
+
+        .text-soc { font-family: 'Ubuntu', sans-serif; font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: start; dominant-baseline: central; }
+        .soc-icon-bg { fill: #ffffff; }
+    </style>
+    
+    <filter id="blurFilter_s" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+    </filter>
+
+    <clipPath id="bannerClip2">
+      <rect width="550" height="70" rx="10" ry="10" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#bannerClip2)">
+    <rect class="banner-bg" width="550" height="70" />
+
+    <g filter="url(#blurFilter_s)">
+      <circle class="blob1" cx="150" cy="35" r="40" />
+      <circle class="blob2" cx="450" cy="55" r="50" />
+      <circle class="blob3" cx="750" cy="15" r="45" />
+    </g>
+    
+    <rect width="550" height="70" fill="#0b0c10" opacity="0.4" rx="10" ry="10"/>
+
+    <g transform="translate(30, 35)">
+        <g transform="translate(0, -22) scale(0.61)">
+            <svg height="72" viewBox="0 0 72 72" width="72" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M8,72 L64,72 C68.418278,72 72,68.418278 72,64 L72,8 C72,3.581722 68.418278,-8.11624501e-16 64,0 L8,0 C3.581722,8.11624501e-16 -5.41083001e-16,3.581722 0,8 L0,64 C5.41083001e-16,68.418278 3.581722,72 8,72 Z" fill="#007EBB"/><path d="M62,62 L51.315625,62 L51.315625,43.8021149 C51.315625,38.8127542 49.4197917,36.0245323 45.4707031,36.0245323 C41.1746094,36.0245323 38.9300781,38.9261103 38.9300781,43.8021149 L38.9300781,62 L28.6333333,62 L28.6333333,27.3333333 L38.9300781,27.3333333 L38.9300781,32.0029283 C38.9300781,32.0029283 42.0260417,26.2742151 49.3825521,26.2742151 C56.7356771,26.2742151 62,30.7644705 62,40.051212 L62,62 Z M16.349349,22.7940133 C12.8420573,22.7940133 10,19.9296567 10,16.3970067 C10,12.8643566 12.8420573,10 16.349349,10 C19.8566406,10 22.6970052,12.8643566 22.6970052,16.3970067 C22.6970052,19.9296567 19.8566406,22.7940133 16.349349,22.7940133 Z M11.0325521,62 L21.769401,62 L21.769401,27.3333333 L11.0325521,27.3333333 L11.0325521,62 Z" fill="#FFF"/></g></svg>
+        </g>
+        
+        <text x="65" y="0" class="text-soc">Join My Network</text>
+    </g>
+  </g>
+</svg>

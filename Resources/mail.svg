@@ -1,0 +1,54 @@
+
+
+<svg viewBox="0 0 550 70" width="100%" height="70px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+        @font-face {
+            font-family: 'Ubuntu';
+            src: url('./Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+      
+        .banner-bg { fill: #0b0c10; rx: 10px; ry: 10px; }
+      
+        .blob1 { fill: #00E5FF; opacity: 0.6; animation: float1_s 12s infinite ease-in-out alternate; transform-origin: center; }
+        .blob2 { fill: #B141FF; opacity: 0.6; animation: float2_s 14s infinite ease-in-out alternate; transform-origin: center; }
+        .blob3 { fill: #FF2E93; opacity: 0.5; animation: float3_s 16s infinite ease-in-out alternate; transform-origin: center; }
+
+        @keyframes float1_s { 0% { transform: translate(0px, 0px); } 50% { transform: translate(80px, -10px); } 100% { transform: translate(-30px, 15px); } }
+        @keyframes float2_s { 0% { transform: translate(0px, 0px); } 50% { transform: translate(-60px, 15px); } 100% { transform: translate(50px, -15px); } }
+        @keyframes float3_s { 0% { transform: translate(0px, 0px); } 100% { transform: translate(90px, 5px); } }
+
+        .text-soc { font-family: 'Ubuntu', sans-serif; font-size: 26px; font-weight: 700; fill: #ffffff; text-anchor: start; dominant-baseline: central; }
+    </style>
+    
+    <filter id="blurFilter_s_em" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+    </filter>
+
+    <clipPath id="bannerClip3">
+      <rect width="550" height="70" rx="10" ry="10" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#bannerClip3)">
+    <rect class="banner-bg" width="550" height="70" />
+
+    <g filter="url(#blurFilter_s_em)">
+      <circle class="blob1" cx="250" cy="25" r="40" />
+      <circle class="blob2" cx="550" cy="55" r="50" />
+      <circle class="blob3" cx="150" cy="15" r="45" />
+    </g>
+    
+    <rect width="550" height="70" fill="#0b0c10" opacity="0.4" rx="10" ry="10"/>
+
+    <g transform="translate(30, 35)">
+        <g transform="translate(0, -18) scale(0.42)">
+            <svg width="106" height="86" viewBox="0 0 106 86" fill="none" version="1.1" id="svg18_em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M 83.4613,16.1551 V 86 h 11.578 C 101.094,86 106,81.026 106,74.9015 V 2.47101 c 0,-2.09261199 -2.404,-3.23204199 -3.997,-1.89540199 z" fill="url(#paint0_linear_11985_190892_em)" id="path11_em" style="fill:url(#paint0_linear_11985_190892_em)" /><path fill-rule="evenodd" clip-rule="evenodd" d="M 67.3128,29.7407 46.1604,48.6618 c -3.6066,3.2211 -8.9895,3.2978 -12.6827,0.1862 L 0,20.6691 V 2.482 C 0,0.38939001 2.40441,-0.76099599 3.99653,0.57564301 L 45.998,35.8761 c 4.0615,3.4183 9.9534,3.4183 14.0149,0 z" fill="url(#paint1_linear_11985_190892_em)" id="path12_em" style="fill:url(#paint1_linear_11985_190892_em)" /><path d="m 83.4613,16.1661 -16.1485,13.5746 0.0108,-10e-5 -21.1632,18.9212 c -3.6066,3.2211 -8.9895,3.2978 -12.6827,0.1862 L 0,20.6691 V 74.9015 C 0,81.0259 4.9063,86 10.9607,86 h 72.5006 z" fill="url(#paint2_radial_11985_190892_em)" id="path13_em" style="fill:url(#paint2_radial_11985_190892_em)" /><defs id="defs18_em"><linearGradient id="paint0_linear_11985_190892_em" x1="265.97501" y1="141.754" x2="244.3" y2="-73.404099" gradientUnits="userSpaceOnUse"><stop offset="0.271" stop-color="#E3D9FF" id="stop13_em" /><stop offset="1" stop-color="#7341FF" id="stop14_em" /></linearGradient><linearGradient id="paint1_linear_11985_190892_em" x1="62.634602" y1="86.798401" x2="18.552999" y2="-87.2799" gradientUnits="userSpaceOnUse"><stop stop-color="#E3D9FF" id="stop15_em" /><stop offset="1" stop-color="#7341FF" id="stop16_em" /></linearGradient><radialGradient id="paint2_radial_11985_190892_em" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(123.614,0,0,125.045,105.538,10.5272)"><stop offset="0.5561" stop-color="#6D4AFF" id="stop17_em" /><stop offset="0.9944" stop-color="#AA8EFF" id="stop18_em" /></radialGradient></defs></svg>
+        </g>
+        
+        <text x="65" y="0" class="text-soc">Send me an E-mail</text>
+    </g>
+  </g>
+</svg>

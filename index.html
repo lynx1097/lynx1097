@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lynx Portfolio</title>
+
+  <!-- ============================================================= -->
+  <!-- FONTS  (moved here from <body>; local files in Resources)      -->
+  <!-- Ubuntu = banner font, JetBrains Mono = terminal vibe        -->
+  <!-- ============================================================= -->
+  <style>
+    @font-face {
+      font-family: 'Ubuntu';
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+      src: url("Resources/Ubuntu/Ubuntu-Light.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'Ubuntu';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("Resources/Ubuntu/Ubuntu-Regular.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'Ubuntu';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url("Resources/Ubuntu/Ubuntu-Medium.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'Ubuntu';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("Resources/Ubuntu/Ubuntu-Bold.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'Ubuntu';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url("Resources/Ubuntu/Ubuntu-Italic.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'Ubuntu';
+      font-style: italic;
+      font-weight: 500;
+      font-display: swap;
+      src: url("Resources/Ubuntu/Ubuntu-MediumItalic.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'Ubuntu';
+      font-style: italic;
+      font-weight: 700;
+      font-display: swap;
+      src: url("Resources/Ubuntu/Ubuntu-BoldItalic.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 100;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-Thin.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 200;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-ExtraLight.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-Light.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-Regular.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-Medium.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-SemiBold.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-Bold.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: italic;
+      font-weight: 300;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-LightItalic.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-Italic.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: italic;
+      font-weight: 600;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: italic;
+      font-weight: 700;
+      font-display: swap;
+      src: url("Resources/IBM_Plex_Mono/IBMPlexMono-BoldItalic.ttf") format("truetype");
+    }
+  </style>
+
+  <!-- ============================================================= -->
+  <!-- ORIGINAL BANNER STYLES  — DO NOT EDIT (your banner CSS as-is)  -->
+  <!-- ============================================================= -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { height: 100%; background: #05070f; }
+
+        @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+        @keyframes rotateBorder { to { --angle: 360deg; } }
+        @keyframes badgePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.3); }
+        }
+
+        .tech-banner {
+            --tilt-x: 0deg; --tilt-y: 0deg; --lift: 0px;
+            position: relative; display: block; width: 900px; height: 150px;
+            text-decoration: none; color: white; cursor: pointer;
+            font-family: var(--banner-font, 'Segoe UI', system-ui, sans-serif);
+            transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(var(--lift));
+            transform-style: preserve-3d; transition: transform 0.2s ease;
+        }
+        .tech-banner:hover { --lift: -5px; }
+        .tech-banner.is-tilting { transition: none; }
+
+        .tech-banner::before {
+            content: ''; position: absolute; inset: -2px; z-index: 0; border-radius: 22px;
+            background: conic-gradient(from var(--angle), var(--theme-color-1), var(--theme-color-2), var(--theme-color-1));
+            animation: rotateBorder 5s linear infinite; filter: blur(0.5px); opacity: 0.85;
+        }
+
+        .banner-shell {
+            position: absolute; inset: 0; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--theme-color-1) 0%, #151515 50%, var(--theme-color-2) 100%);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255,255,255,0.15); border-bottom: 1px solid rgba(0,0,0,0.5); z-index: 1;
+        }
+
+        .glass-overlay { position: absolute; inset: 0; background: rgba(15,15,20,0.7); transition: background 0.4s ease; z-index: 1; }
+        .tech-banner:hover .glass-overlay { background: rgba(15,15,20,0.4); }
+
+        .noise-layer {
+            position: absolute; inset: 0; z-index: 2; pointer-events: none;
+            opacity: 0.08; mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        .shine-sweep {
+            position: absolute; inset: 0; z-index: 3; pointer-events: none;
+            background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+            transform: translateX(-150%); transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .tech-banner:hover .shine-sweep { transform: translateX(150%); }
+
+        .layer-screenshots { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+        .screenshot-card {
+            position: absolute; width: 140px; height: 220px;
+            border-radius: 12px; border: 2px solid rgba(255,255,255,0.1); overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5); opacity: 0.3; filter: blur(4px) saturate(0.5);
+            transform: perspective(800px) rotateY(-20deg) rotateX(10deg) scale(0.75);
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .screenshot-card img { width: 100%; height: 100%; object-fit: cover; }
+        .tech-banner:hover .screenshot-card {
+            opacity: 0.7; filter: blur(0px) saturate(1); transform: perspective(800px) rotateY(-10deg) rotateX(5deg) scale(0.9);
+            border-color: rgba(255,255,255,0.3); box-shadow: -15px 15px 25px rgba(0,0,0,0.6);
+        }
+        .tech-banner:hover .shot-0 { transform: perspective(800px) rotateY(-10deg) rotateX(5deg) scale(0.9) translateX(30px); }
+        .tech-banner:hover .shot-1 { transform: perspective(800px) rotateY(-10deg) rotateX(5deg) scale(0.95) translateY(10px); opacity: 0.95; }
+        .tech-banner:hover .shot-2 { transform: perspective(800px) rotateY(-10deg) rotateX(5deg) scale(0.9) translateX(-30px); }
+        .tech-banner:hover .shot-3 { transform: perspective(800px) rotateY(-10deg) rotateX(5deg) scale(0.85) translateX(40px); }
+        .tech-banner:hover .shot-4 { transform: perspective(800px) rotateY(-10deg) rotateX(5deg) scale(0.85) translateX(-40px); }
+
+        .layer-logo {
+            position: absolute; inset: 0; z-index: 7; pointer-events: none;
+            overflow: hidden; border-radius: 20px;
+        }
+        .main-logo {
+            position: absolute; z-index: 4; left: 10px; top: 0; height: 150px; width: 150px;
+            object-fit: contain; filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.6));
+            transform-origin: center center; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .tech-banner:hover .main-logo {
+            transform: scale(1.45) rotate(-6deg);
+            filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.8)) drop-shadow(0 0 40px var(--theme-color-1));
+        }
+
+        .banner-content {
+            position: relative; z-index: 5; height: 100%; display: flex; flex-direction: column;
+            justify-content: center; padding-left: 180px; padding-right: 20px; pointer-events: none;
+        }
+        .banner-content::before {
+            content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: 20px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.18) 62%, transparent 84%);
+        }
+        .banner-content h2 {
+            margin: 0; font-size: 42px; font-weight: 800; font-family: inherit;
+            letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.95), 0 4px 18px rgba(0,0,0,0.85);
+        }
+        .banner-content .tagline {
+            margin: 4px 0 0 0; font-size: 14px; opacity: 0.92; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 2px 10px rgba(0,0,0,0.75);
+        }
+
+        .layer-subtech {
+            display: flex; gap: 12px; margin-top: 10px; z-index: 3; pointer-events: auto;
+        }
+        .sub-logo {
+            position: relative; height: 26px; 
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+            opacity: 0.8; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .sub-logo img { height: 100%; width: auto; display: block; }
+        .tech-banner:hover .sub-logo {
+            opacity: 1; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.8)) drop-shadow(0 0 10px rgba(255,255,255,0.2));
+            transform: translateY(-3px) scale(1.1);
+        }
+        .sub-logo[data-name]::after {
+            content: attr(data-name);
+            position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.9); color: white; padding: 3px 8px; border-radius: 4px;
+            font-size: 10px; font-weight: 600; white-space: nowrap;
+            opacity: 0; pointer-events: none; transition: opacity 0.2s; letter-spacing: 0.5px;
+        }
+        .sub-logo[data-name]:hover::after { opacity: 1; }
+
+        .status-badge {
+            position: absolute; top: 12px; right: 14px; z-index: 6; padding: 4px 10px; border-radius: 999px;
+            font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.25); background: rgba(0,0,0,0.4); color: white;
+        }
+        .status-badge.badge-live { background: rgba(34,197,94,0.35); border-color: rgba(74,222,128,0.7); }
+        .status-badge.badge-wip { background: rgba(251,146,60,0.35); border-color: rgba(253,186,116,0.7); }
+        .status-badge.badge-oss { background: rgba(59,130,246,0.35); border-color: rgba(96,165,250,0.7); }
+        .status-badge.badge-archived { background: rgba(107,114,128,0.4); border-color: rgba(156,163,175,0.7); }
+        .status-badge.badge-featured { background: rgba(168,85,247,0.35); border-color: rgba(192,132,252,0.7); }
+        .status-badge.badge-hackathon { background: rgba(236,72,153,0.35); border-color: rgba(244,114,182,0.7); }
+        .status-badge .badge-dot {
+            display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+            background: currentColor; margin-right: 6px; vertical-align: 1px; box-shadow: 0 0 6px currentColor;
+        }
+        .status-badge.badge-live .badge-dot { animation: badgePulse 1.5s ease-in-out infinite; }
+
+        .action-buttons {
+            position: absolute; bottom: 12px; right: 14px; z-index: 6; display: flex; gap: 8px;
+            opacity: 0; transform: translateX(20px); transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .tech-banner:hover .action-buttons { opacity: 1; transform: translateX(0); }
+        .action-btn {
+            pointer-events: auto; padding: 6px 12px; border-radius: 6px;
+            background: #21262d; border: 1px solid rgba(255,255,255,0.35); color: #fff; text-decoration: none;
+            font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.45); transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        .action-btn.btn-live { background: #238636; border-color: #3fb950; }
+        .action-btn.btn-github { background: #30363d; border-color: #6e7681; }
+        .action-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,0.55); }
+        .action-btn.btn-live:hover { background: #2ea043; }
+        .action-btn.btn-github:hover { background: #444c56; }
+
+        .tech-banner.layout-right .main-logo { left: auto; right: 10px; }
+        .tech-banner.layout-right .banner-content { padding-left: 30px; padding-right: 180px; align-items: flex-end; text-align: right; }
+        .tech-banner.layout-right .banner-content::before { background: linear-gradient(270deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.18) 62%, transparent 84%); }
+        .tech-banner.layout-right .layer-subtech { justify-content: flex-end; }
+        .tech-banner.layout-right:hover .main-logo { transform: scale(1.45) rotate(6deg); }
+
+        .tech-banner.layout-center { height: 200px; }
+        .tech-banner.layout-center .main-logo { left: 50%; top: 8px; height: 80px; width: 80px; transform: translateX(-50%); }
+        .tech-banner.layout-center:hover .main-logo { transform: translateX(-50%) scale(1.25) rotate(-6deg); }
+        .tech-banner.layout-center .banner-content {
+            padding-left: 30px; padding-right: 30px; align-items: center; text-align: center; justify-content: flex-end; padding-bottom: 18px;
+        }
+        .tech-banner.layout-center .banner-content::before { background: linear-gradient(0deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.35) 48%, transparent 78%); }
+        .tech-banner.layout-center .layer-subtech { justify-content: center; }
+        .tech-banner.layout-center .banner-content h2 { font-size: 32px; }
+    </style>
+
+  <!-- ============================================================= -->
+  <!-- PORTFOLIO PAGE STYLES  (everything below is new / safe to edit)-->
+  <!-- It only ADDS rules; it never overrides your banner styles.     -->
+  <!-- ============================================================= -->
+  <style id="portfolio-theme">
+
+    /* ---------- THEME TOKENS ---------------------------------------
+       🔧 EDIT: tweak the whole site palette from these variables.
+       Accent colours intentionally echo your banners (cyan/violet/pink). */
+    :root{
+      --bg:        #05070f;   /* page base (matches the html background) */
+      --bg-soft:   #0a0e1a;   /* slightly lighter panels backdrop        */
+      --panel:     rgba(18,22,34,0.55);   /* glass panel fill            */
+      --panel-brd: rgba(255,255,255,0.09);/* glass panel hairline border */
+      --text:      #e9edf6;   /* primary text       */
+      --muted:     #8a93a8;   /* secondary text     */
+      --faint:     #5a6378;   /* tertiary / labels  */
+      --accent-1:  #22d3ee;   /* cyan   */
+      --accent-2:  #a78bfa;   /* violet */
+      --accent-3:  #f472b6;   /* pink   */
+      --sans: 'Ubuntu', system-ui, sans-serif;          /* body font  */
+      --mono: 'JetBrains Mono', ui-monospace, monospace; /* code/labels */
+      --maxw: 1120px;         /* content max width */
+      --nav-h: 64px;          /* sticky nav height (used for scroll offset) */
+    }
+
+    /* ---------- BASE / PAGE ATMOSPHERE -----------------------------
+       Layered neon glows + faint grid + film grain, so the page has the
+       same "glassy neon in the dark" mood as your banners. */
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family:var(--sans); color:var(--text); background:var(--bg);
+      line-height:1.6; overflow-x:hidden; position:relative; min-height:100vh;
+    }
+    /* glow blobs + grid, fixed behind everything */
+    body::before{
+      content:''; position:fixed; inset:0; z-index:-2; pointer-events:none;
+      background:
+        radial-gradient(60vw 60vw at 12% -8%, rgba(34,211,238,0.16), transparent 60%),
+        radial-gradient(55vw 55vw at 100% 0%, rgba(167,139,250,0.16), transparent 60%),
+        radial-gradient(50vw 50vw at 50% 120%, rgba(244,114,182,0.10), transparent 60%);
+    }
+    body::after{                         /* faint blueprint grid */
+      content:''; position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:0.35;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size:48px 48px; mask-image:radial-gradient(ellipse at 50% 0%, #000 30%, transparent 85%);
+    }
+    /* reusable film-grain overlay (same idea as your banners' noise) */
+    .grain{
+      position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:0.05; mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    a{ color:inherit; }
+    .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px; } /* content gutter */
+
+    /* mono "command prompt" label used above each section
+       🔧 EDIT: this is the little "> something" green-cyan label */
+    .kicker{
+      font-family:var(--mono); font-size:17px; letter-spacing:2px; color:var(--accent-1);
+      display:inline-flex; align-items:center; gap:8px; text-transform:lowercase;
+    }
+    .kicker::before{ content:'>'; color:var(--accent-2); font-weight:700; }
+
+    /* shared section heading */
+    .sec-title{
+      font-size:clamp(28px, 4.5vw, 44px); font-weight:700; letter-spacing:0.3px; margin:10px 0 0;
+      background:linear-gradient(90deg,#fff, #c9d3e6); -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .sec-sub{ color:var(--muted); margin-top:10px; max-width:60ch; }
+
+    /* ---------- STICKY NAV ----------------------------------------- */
+    .site-nav{
+      position:sticky; top:0; z-index:50; height:var(--nav-h);
+      display:flex; align-items:center;
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      background:rgba(5,7,15,0.55); border-bottom:1px solid var(--panel-brd);
+    }
+    .site-nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    /* brand / logo — terminal prompt style. 🔧 EDIT: your handle here */
+    .brand{ font-family:var(--mono); font-weight:700; font-size:15px; letter-spacing:0.3px; text-decoration:none; white-space:nowrap; }
+    .brand .b-user{ color:var(--accent-1); }
+    .brand .b-host{ color:var(--accent-2); }
+    .brand .b-path{ color:var(--muted); }
+    .brand .b-caret{ color:var(--accent-3); animation:caret 1.1s steps(1) infinite; }
+    @keyframes caret{ 50%{ opacity:0; } }
+    /* nav links */
+    .nav-links{ display:flex; align-items:center; gap:26px; list-style:none; }
+    .nav-links a{ text-decoration:none; color:var(--muted); font-size:14px; font-weight:500; transition:color .2s; }
+    .nav-links a:hover{ color:var(--text); }
+    .nav-cta{
+      text-decoration:none; font-family:var(--mono); font-size:13px; font-weight:600;
+      padding:8px 16px; border-radius:8px; color:#04121a;
+      background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      box-shadow:0 6px 18px rgba(34,211,238,0.25); transition:transform .2s, box-shadow .2s;
+    }
+    .nav-cta:hover{ transform:translateY(-1px); box-shadow:0 10px 26px rgba(34,211,238,0.4); }
+    /* hamburger (mobile only) */
+    .nav-toggle{ display:none; background:none; border:1px solid var(--panel-brd); color:var(--text);
+      width:42px; height:38px; border-radius:9px; font-size:18px; cursor:pointer; }
+
+    /* ---------- HERO ----------------------------------------------- */
+    .hero{ position:relative; min-height:calc(100vh - var(--nav-h)); display:flex; align-items:center; padding:60px 0 40px; overflow:hidden; }
+    .hero .wrap{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:40px; align-items:center; }
+
+    /* HERO PHOTO (your personal image) — fades out as you scroll.
+       🔧 EDIT: set --hero-img to your photo, e.g.
+                style="--hero-img:url('me.jpg')"  on the .hero-photo div,
+       or just replace the URL below. Until then a placeholder shows. */
+        /* 1. Base container */
+    .hero-photo {
+      position: relative; 
+      aspect-ratio: 4/5; 
+      width: 100%; 
+      border-radius: 20px; 
+      border: 1px solid var(--panel-brd);
+      
+      /* Scroll-fade: JS sets --hero-fade from 1 → 0 as you scroll down */
+      opacity: var(--hero-fade, 1);
+      
+      /* Soft mask so the image melts into the dark page */
+      -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+              mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.55);
+      will-change: opacity, transform;
+    }
+
+    /* 2. The neon glow (now sits in the background) */
+    .hero-photo::before {
+      content: ''; 
+      position: absolute; 
+      inset: -2px; 
+      z-index: 1; 
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      filter: blur(14px); 
+      opacity: 0.5;
+    }
+
+    /* 3. The actual image layer (sits securely on top of the glow) */
+    .hero-photo::after {
+      content: ''; 
+      position: absolute; 
+      inset: 0; 
+      z-index: 2; 
+      border-radius: inherit;
+      background-image: var(--hero-img, none);
+      background-size: cover; 
+      background-position: center;
+    }
+
+    /* 4. Placeholder label (stays above everything if no image is set) */
+    .hero-photo .photo-hint {
+      position: absolute; 
+      inset: 0; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 6px;
+      align-items: center; 
+      justify-content: center; 
+      text-align: center; 
+      padding: 20px;
+      font-family: var(--mono); 
+      font-size: 13px; 
+      color: var(--muted); 
+      z-index: 3;
+      background: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 12px, transparent 12px 24px);
+    }
+    .hero-photo[style*="url("] .photo-hint { display: none; }/* hide hint once an image url is set */
+    .photo-hint b{ color:var(--accent-1); font-weight:700; }
+
+    /* hero text */
+    .hero-text .kicker{ margin-bottom:18px; }
+    header.hero > .wrap > .kicker { margin-top: 60px; }
+    .hero-name{
+      font-size:clamp(40px, 7vw, 76px); line-height:1.02; font-weight:700; letter-spacing:-0.5px; margin:0;
+    }
+    .hero-name .accent{
+      background:linear-gradient(120deg,var(--accent-1),var(--accent-2),var(--accent-3));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .hero-tagline{ font-size:clamp(16px, 2vw, 20px); color:var(--muted); margin:22px 0 0; max-width:46ch; }
+    /* role chips */
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 0; list-style:none; }
+    .chips li{
+      font-family:var(--mono); font-size:12.5px; color:var(--text);
+      padding:7px 13px; border-radius:999px;
+      background:var(--panel); border:1px solid var(--panel-brd); backdrop-filter:blur(8px);
+    }
+    .chips li::before{ content:'#'; color:var(--accent-2); margin-right:5px; }
+    /* hero buttons */
+    .hero-cta{ display:flex; flex-wrap:wrap; gap:14px; margin:34px 0 0; }
+    .btn{
+      text-decoration:none; font-weight:600; font-size:14px; padding:12px 22px; border-radius:10px;
+      display:inline-flex; align-items:center; gap:8px; transition:transform .2s, box-shadow .2s, background .2s; cursor:pointer;
+    }
+    .btn-primary{ color:#04121a; background:linear-gradient(135deg,var(--accent-1),var(--accent-2)); box-shadow:0 10px 24px rgba(34,211,238,0.25); }
+    .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(34,211,238,0.4); }
+    .btn-ghost{ color:var(--text); background:var(--panel); border:1px solid var(--panel-brd); backdrop-filter:blur(8px); }
+    .btn-ghost:hover{ transform:translateY(-2px); border-color:rgba(255,255,255,0.25); }
+
+    /* staggered entrance for hero pieces */
+    .rise{ opacity:0; transform:translateY(22px); animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards; }
+    .rise.d1{ animation-delay:.05s } .rise.d2{ animation-delay:.15s } .rise.d3{ animation-delay:.25s }
+    .rise.d4{ animation-delay:.35s } .rise.d5{ animation-delay:.45s } .rise.d6{ animation-delay:.55s }
+    @keyframes rise{ to{ opacity:1; transform:none; } }
+
+    /* ---------- TECH MARQUEE (the "I touch every stack" strip) ------
+       🔧 EDIT: change the words inside the .marquee list in the HTML. */
+    .marquee{ position:relative; padding:22px 0; border-block:1px solid var(--panel-brd);
+      background:rgba(10,14,26,0.4); overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+              mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+    .marquee-track{ display:flex; gap:48px; width:max-content; animation:marquee 38s linear infinite; }
+    .marquee:hover .marquee-track{ animation-play-state:paused; }
+    .marquee-track span{ font-family:var(--mono); font-size:20px; color:var(--accent-3); white-space:nowrap; letter-spacing:2px; }
+    .marquee-track span::before{ content:'◆'; color:var(--accent-2); margin-right:14px; font-size:9px; vertical-align:middle; }
+    @keyframes marquee{ to{ transform:translateX(-50%); } }
+
+    /* ---------- ABOUT ---------------------------------------------- */
+    .about{ padding:96px 0 80px; }
+    .about .wrap{ display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:start; }
+    .about-card{
+      background:var(--panel); border:1px solid var(--panel-brd); border-radius:18px;
+      padding:30px 32px; backdrop-filter:blur(10px); position:relative; overflow:hidden;
+    }
+    /* animated gradient hairline on top of the card (echoes banner border) */
+    .about-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2),var(--accent-3),var(--accent-1));
+      background-size:300% 100%; animation:pan 6s linear infinite; }
+    @keyframes pan{ to{ background-position:300% 0; } }
+    .about-card p{ color:#c4ccdc; margin:0; font-size:16.5px; }
+    .about-card p + p{ margin-top:16px; }
+    /* stat tiles */
+    .stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    .stat{ background:var(--panel); border:1px solid var(--panel-brd); border-radius:14px; padding:20px; text-align:left; }
+    .stat .num{ font-family:var(--mono); font-size:30px; font-weight:700;
+      background:linear-gradient(120deg,var(--accent-1),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .stat .lbl{ color:var(--muted); font-size:13px; margin-top:4px; }
+
+    /* ---------- PROJECTS (wraps your banners, centered + responsive) */
+    .projects{ padding:40px 0 90px; }
+    .projects .wrap{ text-align:center; }
+    .projects .sec-sub{ margin-inline:auto; }
+
+    /* .banners-fit = responsive viewport; JS reserves its height when scaled.
+       .banners-stage = 900px column holding your UNCHANGED banners, centered.
+       On narrow screens JS scales the whole stage down so banners never clip. */
+    .banners-fit{ width:100%; margin-top:44px; padding:0 12px; overflow:visible; }
+    .banners-stage{
+      width:900px;                 /* matches your banner width exactly */
+      margin:0 auto;               /* centered on desktop                */
+      display:flex; flex-direction:column; align-items:center;
+      gap:34px;                    /* 🔧 EDIT: vertical space between banners */
+      transform-origin:top left;   /* JS scales from here on small screens */
+      padding-top:34px;            /* head-room for the screenshot cards */
+    }
+
+    /* ---------- FOOTER / CONTACT ----------------------------------- */
+    .site-footer{ border-top:1px solid var(--panel-brd); background:rgba(10,14,26,0.5); padding:70px 0 40px; }
+    .site-footer .wrap{ text-align:center; }
+    .footer-mail{ display:inline-block; margin-top:14px; font-size:clamp(22px,4vw,40px); font-weight:700;
+      text-decoration:none; background:linear-gradient(120deg,var(--accent-1),var(--accent-2),var(--accent-3));
+      -webkit-background-clip:text; background-clip:text; color:transparent; }
+    /* social links row 🔧 EDIT hrefs in the HTML */
+    .socials{ display:flex; justify-content:center; flex-wrap:wrap; gap:14px; margin:30px 0 0; list-style:none; }
+    .socials a{ font-family:var(--mono); font-size:13px; text-decoration:none; color:var(--muted);
+      padding:9px 16px; border-radius:9px; border:1px solid var(--panel-brd); background:var(--panel); transition:.2s; }
+    .socials a:hover{ color:var(--text); border-color:rgba(255,255,255,0.25); transform:translateY(-2px); }
+    .copyright{ margin-top:34px; color:var(--faint); font-size:13px; }
+    .copyright .mono{ font-family:var(--mono); }
+
+    /* ---------- SCROLL-REVEAL (sections fade/slide in) -------------- */
+    .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+    .reveal.in{ opacity:1; transform:none; }
+
+    /* scroll offset so sticky nav doesn't cover anchored sections */
+    section[id]{ scroll-margin-top:calc(var(--nav-h) + 12px); }
+
+    /* =================  RESPONSIVE  ================================ */
+    /* Tablet / small desktop: stack hero, photo on top */
+    @media (max-width: 880px){
+      .hero .wrap{ grid-template-columns:1fr; gap:30px; }
+      .hero-photo{ max-width:340px; aspect-ratio:4/5; order:-1; margin:0 auto; }
+      .about .wrap{ grid-template-columns:1fr; gap:28px; }
+    }
+    /* Mobile: collapse nav links into a toggleable panel */
+    @media (max-width: 720px){
+      .nav-toggle{ display:block; }
+      .nav-links{
+        position:absolute; top:var(--nav-h); left:0; right:0;
+        flex-direction:column; align-items:flex-start; gap:0;
+        background:rgba(5,7,15,0.96); border-bottom:1px solid var(--panel-brd);
+        padding:8px 0; transform:translateY(-12px); opacity:0; pointer-events:none; transition:.25s;
+      }
+      .nav-links.open{ transform:none; opacity:1; pointer-events:auto; }
+      .nav-links li{ width:100%; }
+      .nav-links a{ display:block; padding:14px 24px; font-size:15px; }
+      .nav-links .nav-cta{ margin:10px 24px; display:inline-block; }
+    }
+    /* Small phones: tighten spacing + single-column stats */
+    @media (max-width: 480px){
+      .wrap{ padding:0 18px; }
+      .stats{ grid-template-columns:1fr; }
+      .about{ padding:70px 0 60px; }
+      .chips li{ font-size:11.5px; }
+    }
+    /* Respect reduced-motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; scroll-behavior:auto !important; }
+      .reveal{ opacity:1; transform:none; }
+    }
+  </style>
+  <style id="skills-theme">
+    .skills{ padding:90px 0; }
+    .skills .wrap{ text-align:center; }
+    .skills .sec-sub{ margin-inline:auto; }
+
+    /* legend under the heading explaining the 1–5 bars */
+    .legend{ display:inline-flex; align-items:center; gap:10px; margin-top:20px;
+      font-family:var(--mono); font-size:12px; color:var(--muted); }
+
+    /* responsive card grid: 3 cols desktop -> 2 -> 1 on phones */
+    .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+      gap:22px; margin-top:38px; text-align:left; }
+
+    /* glass category card (matches the about card look) */
+    .skill-card{ position:relative; overflow:hidden; background:var(--panel);
+      border:1px solid var(--panel-brd); border-radius:16px; padding:22px 24px 14px;
+      backdrop-filter:blur(10px); }
+    .skill-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2),var(--accent-3),var(--accent-1));
+      background-size:300% 100%; animation:pan 6s linear infinite; }
+    .skill-card h3{ font-family:var(--mono); font-size:13.5px; letter-spacing:0.4px; color:#fff;
+      margin:0 0 12px; display:flex; align-items:center; gap:8px; }
+    .skill-card h3::before{ content:'#'; color:var(--accent-1); font-weight:700; }
+
+    .skill-list{ list-style:none; margin:0; padding:0; }
+    .skill{ display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:9px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .skill:last-child{ border-bottom:none; }
+    .s-name{ font-size:14px; color:#cfd7e6; }
+
+    /* ---- mobile-network signal bars (1..5) ----
+       🔧 EDIT a skill's level via data-level="N" on its .bars span. */
+    .bars{ display:inline-flex; align-items:flex-end; gap:3px; height:18px; flex:none; }
+    .bar{ width:4px; border-radius:1px; background:rgba(255,255,255,0.03);
+      transition:background .3s, box-shadow .3s; }
+    .bar:nth-child(1){ height:6px } .bar:nth-child(2){ height:9px }
+    .bar:nth-child(3){ height:12px } .bar:nth-child(4){ height:15px } .bar:nth-child(5){ height:18px }
+    /* fill bars up to the chosen level with the neon accent */
+    .bars[data-level="1"] .bar:nth-child(-n+1),
+    .bars[data-level="2"] .bar:nth-child(-n+2),
+    .bars[data-level="3"] .bar:nth-child(-n+3),
+    .bars[data-level="4"] .bar:nth-child(-n+4),
+    .bars[data-level="5"] .bar:nth-child(-n+5){
+      background:linear-gradient(180deg,var(--accent-1),var(--accent-2));
+      box-shadow:0 0 7px rgba(34,211,238,0.45);
+    }
+
+    @media (max-width:760px){ .skills-grid{ grid-template-columns:1fr; } }
+    @media (max-width:480px){ .skills{ padding:64px 0; } }
+  </style>
+</head>
+
+<body>
+  <!-- film-grain overlay (atmosphere, sits above bg, below content) -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ================================================================ -->
+  <!-- NAVBAR                                                            -->
+  <!-- 🔧 EDIT: your handle in .brand, and the menu links below.         -->
+  <!-- ================================================================ -->
+  <nav class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="#top">
+        <span class="b-user">lynx</span><span class="b-host">@portfolio</span><span class="b-path">:~$</span><span class="b-caret">_</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="#stack">My Stack</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">My Complete Skillset</a></li>
+        <li><a href="#projects">My Projects</a></li>
+        <li><a href="#contact">Connect with me</a></li>
+        <!-- 🔧 EDIT: point this to your GitHub profile -->
+        <li><a class="nav-cta" href="https://github.com/lynx1097" target="_blank" rel="noopener">GitHub ↗</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================================================================ -->
+  <!-- HERO                                                              -->
+  <!-- ================================================================ -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <!-- LEFT: intro text -->
+      <div class="hero-text">
+        <span class="kicker rise d1">whoami</span>
+        <!-- 🔧 EDIT: your display name / handle -->
+        <h1 class="hero-name rise d2">I'm <span class="accent">Lynx</span>.<br>I build things that are creatively <span class="accent">engineered</span>.</h1>
+        <!-- One-liner (rephrased from what you gave me) 🔧 EDIT freely -->
+        <p class="hero-tagline rise d3">
+          Backend engineer, Linux enthusiast and open-source contributor , a 
+          generalist who learns fast, leads projects , and multi-talented , multi-disciplinary ...
+        </p>
+        <!-- role chips 🔧 EDIT: add/remove tags -->
+        <ul class="chips rise d4">
+          <li>Backend Engineer</li>
+          <li>Linux Enthusiast</li>
+          <li>OSS Contributor</li>
+          <li>Project Lead</li>
+          <li>Tinkerer</li>
+          <li>Generalist</li>
+        </ul>
+        <div class="hero-cta rise d5">
+          <a class="btn btn-primary" href="#projects">View Projects ↓</a>
+          <a class="btn btn-ghost" href="https://github.com/lynx1097" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: personal photo with scroll-fade.
+           🔧 EDIT: set your photo in the style attribute on the
+           .hero-photo div below (the hero-img custom property),
+           e.g. point it at me.jpg placed next to this file in your repo. -->
+      <div class="hero-photo rise d3" id="heroPhoto" style="--hero-img:url('./Resources/me.jpg')">  
+      </div>
+      <span class="kicker">cat tech_stack.json</span>
+    </div>
+  </header>
+
+  <!-- ================================================================ -->
+  <!-- TECH MARQUEE  — "I take a sip from every cup"                     -->
+  <!-- 🔧 EDIT: swap these keywords. The list is duplicated once in JS    -->
+  <!--          terms below for a seamless loop, so edit BOTH halves      -->
+  <!--          OR just edit the first half and let JS clone it.          -->
+  <!-- ================================================================ -->
+  
+  <section class="marquee" id="stack" aria-label="Technologies">
+    
+    <div class="marquee-track" id="marqueeTrack">
+      <span>Java / Spring Boot</span><span>C# / .NET</span><span>Python</span>
+      <span>PHP / Laravel</span><span>NestJS</span><span>Flutter / Dart</span>
+      <span>Linux / Bash</span><span>Docker</span><span>CI / CD</span>
+      <span>PostgreSQL</span><span>Kafka</span><span>WebAssembly</span>
+      <span>C / C++</span><span>Git / OSS</span><span>Cloud Hosting</span>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <!-- ABOUT  (kept short on purpose — details live in your GitHub README)-->
+  <!-- ================================================================ -->
+  <section class="about reveal" id="about">
+    <div class="wrap">
+      <div>
+        <span class="kicker">cat about.md</span>
+        <h2 class="sec-title">A Generalist Mentality.</h2>
+        <div class="about-card" style="margin-top:22px">
+          <p>I'm flexible moving between disciplines. backend , frontend , full-stack , DevOps , OS development or any other domain.</p>
+          <p>I can both reinvent the wheel and build on someone else's, learn new
+             stacks quickly, and slot into a lot of different roles. In short: I'm a jack of all trades , and I'm good at a great many of them .</p>
+        </div>
+      </div>
+      <!-- stat tiles 🔧 EDIT: numbers + labels (or delete tiles you don't want) -->
+      <div class="stats">
+        <div class="stat"><div class="num">9+</div><div class="lbl">Shipped projects</div></div>
+        <div class="stat"><div class="num">10+</div><div class="lbl">Languages &amp; frameworks</div></div>
+        <div class="stat"><div class="num">∞</div><div class="lbl">Things tinkered with</div></div>
+        <div class="stat"><div class="num">OSS</div><div class="lbl">Open-source contributor</div></div>
+      </div>
+    </div>
+  </section>
+<section class="skills reveal" id="skills">
+    <div class="wrap">
+      <span class="kicker">cat ~/skills.json</span>
+      <h2 class="sec-title">Skills &amp; Proficiency</h2>
+      <p class="sec-sub">Self-rated across the things I actually use — the bars show comfort level, not years on a r&eacute;sum&eacute;.</p>
+      <!-- legend 🔧 EDIT wording if you like -->
+      <div class="legend">
+        <span>weak</span>
+        <span class="bars" data-level="5" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+        <span>strong&nbsp;&nbsp;&middot;&nbsp;&nbsp;1&ndash;5</span>
+      </div>
+
+      <div class="skills-grid">
+      <!-- category card 🔧 EDIT: title in <h3>, or copy a whole card to add a category -->
+      <div class="skill-card">
+        <h3>Core CS Fundamentals</h3>
+        <ul class="skill-list">
+        <li class="skill"><span class="s-name">DSA (Data Structures &amp; Algorithms)</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Algorithm Design</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Time / Space Complexity Analysis</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Operating Systems</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Computer Architecture</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Theory of Computation</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        </ul>
+      </div>
+      <!-- category card 🔧 EDIT: title in <h3>, or copy a whole card to add a category -->
+      <div class="skill-card">
+        <h3>Programming Paradigms</h3>
+        <ul class="skill-list">
+        <li class="skill"><span class="s-name">OOP</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Functional Programming</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Event-Driven Programming</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Memory Management</span><span class="bars" data-level="2" title="40%" aria-label="proficiency 2 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        </ul>
+      </div>
+      <!-- category card 🔧 EDIT: title in <h3>, or copy a whole card to add a category -->
+      <div class="skill-card">
+        <h3>Software Design &amp; Architecture</h3>
+        <ul class="skill-list">
+        <li class="skill"><span class="s-name">SOLID Principles</span><span class="bars" data-level="1" title="20%" aria-label="proficiency 1 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Design Patterns (GoF)</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Clean Architecture</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Domain-Driven Design (DDD)</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Microservices</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Modular Monolith</span><span class="bars" data-level="5" title="100%" aria-label="proficiency 5 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Scalability &amp; High Availability</span><span class="bars" data-level="2" title="40%" aria-label="proficiency 2 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">API Design</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        </ul>
+      </div>
+      <!-- category card 🔧 EDIT: title in <h3>, or copy a whole card to add a category -->
+      <div class="skill-card">
+        <h3>Backend Engineering</h3>
+        <ul class="skill-list">
+        <li class="skill"><span class="s-name">REST APIs</span><span class="bars" data-level="2" title="40%" aria-label="proficiency 2 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">GraphQL</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Auth (JWT / OAuth)</span><span class="bars" data-level="2" title="40%" aria-label="proficiency 2 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Caching Strategies</span><span class="bars" data-level="1" title="20%" aria-label="proficiency 1 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Message Queues (Kafka / RabbitMQ)</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        </ul>
+      </div>
+      <!-- category card 🔧 EDIT: title in <h3>, or copy a whole card to add a category -->
+      <div class="skill-card">
+        <h3>Databases</h3>
+        <ul class="skill-list">
+        <li class="skill"><span class="s-name">SQL</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Relational Modeling</span><span class="bars" data-level="2" title="40%" aria-label="proficiency 2 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">NoSQL</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Migrations</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        </ul>
+      </div>
+      <!-- category card 🔧 EDIT: title in <h3>, or copy a whole card to add a category -->
+      <div class="skill-card">
+        <h3>DevOps &amp; Infrastructure</h3>
+        <ul class="skill-list">
+        <li class="skill"><span class="s-name">Linux System Administration</span><span class="bars" data-level="5" title="100%" aria-label="proficiency 5 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Bash Scripting</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Docker / Containerization</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">CI/CD Pipelines</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Cloud Hosting</span><span class="bars" data-level="2" title="40%" aria-label="proficiency 2 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Git &amp; Version Control</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        </ul>
+      </div>
+      <!-- category card 🔧 EDIT: title in <h3>, or copy a whole card to add a category -->
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <!-- 🔧 NOTE: the 9 levels below (Java..Bash) were estimated from your
+             projects since you said "All". Tweak any data-level you disagree with. -->
+        <ul class="skill-list">
+        <li class="skill"><span class="s-name">Java</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">C#</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Python</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">C / C++</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">PHP</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Dart</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">JavaScript / TypeScript</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">SQL</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Bash</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Prolog</span><span class="bars" data-level="2" title="40%" aria-label="proficiency 2 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Haskell</span><span class="bars" data-level="2" title="40%" aria-label="proficiency 2 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        </ul>
+      </div>
+      <!-- category card 🔧 EDIT: title in <h3>, or copy a whole card to add a category -->
+      <div class="skill-card">
+        <h3>Frameworks &amp; Platforms</h3>
+        <ul class="skill-list">
+        <li class="skill"><span class="s-name">Spring Boot</span><span class="bars" data-level="2" title="40%" aria-label="proficiency 2 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">ASP.NET Core</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Laravel</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">NestJS</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Flutter</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">PyQt6</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Angular</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Next.js</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">React</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        </ul>
+      </div>
+      <!-- category card 🔧 EDIT: title in <h3>, or copy a whole card to add a category -->
+      <div class="skill-card">
+        <h3>Systems &amp; Tinkering</h3>
+        <ul class="skill-list">
+        <li class="skill"><span class="s-name">Linux Kernel Compilation</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Driver Patching</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Distro Hopping</span><span class="bars" data-level="4" title="80%" aria-label="proficiency 4 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        <li class="skill"><span class="s-name">Android Modding</span><span class="bars" data-level="3" title="60%" aria-label="proficiency 3 of 5"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <!-- PROJECTS  — your 7 banners live here, UNCHANGED, just centered     -->
+  <!--            and auto-scaled to fit small screens.                   -->
+  <!-- ================================================================ -->
+  <section class="projects reveal" id="projects">
+    <div class="wrap">
+      <span class="kicker">ls ~/projects</span>
+      <h2 class="sec-title">Selected Work</h2>
+      <p class="sec-sub">From lots of projects ! A few selections I've built across games, full-stack web, desktop and mobile. Hover a card for live &amp; source links. The rest are yet to be polished and uploaded.</p>
+    </div>
+
+    <!-- responsive viewport (JS reserves height when scaled on mobile) -->
+    <div class="banners-fit">
+      <!-- 900px stage holding your banners; centered, scaled on small screens -->
+      <div class="banners-stage" id="bannersStage">
+
+<!-- ====== ORIGINAL BANNERS START (verbatim — do not restructure) ====== -->
+    <div class="tech-banner layout-left" style="--theme-color-1: rgba(167, 139, 250, 1.00); --theme-color-2: rgba(236, 72, 153, 1.00); --banner-font: 'Ubuntu' , sans-serif;">
+        <div class="banner-shell">
+            <div class="glass-overlay"></div>
+            <div class="noise-layer"></div>
+            <div class="shine-sweep"></div>
+            <div class="layer-screenshots">
+                <div class="screenshot-card shot-0" style="right:14px; top:-10px; z-index:1;"><img src="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S1.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S1.jpg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S1.jpeg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S1.svg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+                <div class="screenshot-card shot-1" style="right:100px; top:-30px; z-index:2;"><img src="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S2.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S2.jpg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S2.jpeg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S2.svg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+                <div class="screenshot-card shot-2" style="right:186px; top:-15px; z-index:1;"><img src="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S3.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S3.jpg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S3.jpeg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S3.svg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/S3.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            </div>
+        </div>
+        <div class="banner-content">
+            <h2>Breadfast UI clone</h2>
+            <p class="tagline">A UI/UX focused flutter clone of Breadfast</p>
+            <div class="layer-subtech">
+                <div class="sub-logo sub-0" data-name="Dart"><img src="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/ST1.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/ST1.jpg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/ST1.jpeg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/ST1.svg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/ST1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+                <div class="sub-logo sub-1" data-name="Firebase"><img src="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/ST2.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/ST2.jpg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/ST2.jpeg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/ST2.svg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/ST2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            </div>
+        </div>
+        <div class="layer-logo"><img src="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/MT.png" alt="Main Logo" class="main-logo" data-fb="https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/MT.jpg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/MT.jpeg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/MT.svg|https://raw.githubusercontent.com/lynx1097/breadfast-clone/main/screenshots/Banner/MT.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        <div class="status-badge badge-live"><span class="badge-dot"></span>Live</div>
+        <div class="action-buttons">
+            <a class="action-btn btn-live" href="https://lynx1097.github.io/breadfast-clone/" target="_blank" rel="noopener noreferrer">Live</a>
+            <a class="action-btn btn-github" href="https://github.com/lynx1097/breadfast-clone/" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+    </div>
+
+
+    <div class="tech-banner layout-left" style="--theme-color-1: rgba(107, 114, 128, 1.00); --theme-color-2: rgba(31, 41, 55, 1.00);  --banner-font: 'Ubuntu' , sans-serif;">
+        <div class="banner-shell">
+            <div class="glass-overlay"></div>
+            <div class="noise-layer"></div>
+            <div class="shine-sweep"></div>
+            <div class="layer-screenshots">
+                <div class="screenshot-card shot-0" style="right:14px; top:-10px; z-index:1;"><img src="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S1.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S1.jpg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S1.jpeg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S1.svg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+                <div class="screenshot-card shot-1" style="right:100px; top:-30px; z-index:2;"><img src="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S2.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S2.jpg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S2.jpeg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S2.svg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+                <div class="screenshot-card shot-2" style="right:186px; top:-15px; z-index:1;"><img src="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S3.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S3.jpg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S3.jpeg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S3.svg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/S3.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            </div>
+        </div>
+        <div class="banner-content">
+            <h2>GovGate</h2>
+            <p class="tagline">A platform connecting citizens, government, and advertisers</p>
+            <div class="layer-subtech">
+                <div class="sub-logo sub-0" data-name="Flutter"><img src="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/ST1.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/ST1.jpg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/ST1.jpeg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/ST1.svg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/ST1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+                <div class="sub-logo sub-1" data-name="Firebase"><img src="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/ST2.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/ST2.jpg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/ST2.jpeg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/ST2.svg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/ST2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            </div>
+        </div>
+        <div class="layer-logo"><img src="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/MT.png" alt="Main Logo" class="main-logo" data-fb="https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/MT.jpg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/MT.jpeg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/MT.svg|https://raw.githubusercontent.com/lynx1097/govgate/main/screenshots/Banner/MT.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        <div class="status-badge badge-live"><span class="badge-dot"></span>Live</div>
+        <div class="action-buttons">
+            <a class="action-btn btn-live" href="https://lynx1097.github.io/govgate/" target="_blank" rel="noopener noreferrer">Live</a>
+            <a class="action-btn btn-github" href="https://github.com/lynx1097/govgate/" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+    </div>
+
+<div class="tech-banner layout-left" style="--theme-color-1: rgba(255, 112, 67, 1.00); --theme-color-2: rgba(233, 30, 99, 1.00); --banner-font: 'Ubuntu' , sans-serif;">
+    <div class="banner-shell">
+        <div class="glass-overlay"></div>
+        <div class="noise-layer"></div>
+        <div class="shine-sweep"></div>
+        <div class="layer-screenshots">
+            <div class="screenshot-card shot-0" style="right:14px; top:-10px; z-index:1;"><img src="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S1.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S1.jpg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S1.jpeg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S1.svg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="screenshot-card shot-1" style="right:100px; top:-30px; z-index:2;"><img src="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S2.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S2.jpg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S2.jpeg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S2.svg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="screenshot-card shot-2" style="right:186px; top:-15px; z-index:1;"><img src="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S3.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S3.jpg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S3.jpeg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S3.svg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/S3.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        </div>
+    </div>
+    <div class="banner-content">
+        <h2>TLoU PixelVerse</h2>
+        <p class="tagline">The Last of US , but in pixel world</p>
+        <div class="layer-subtech">
+            <div class="sub-logo sub-0" data-name="JavaFx"><img src="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/ST1.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/ST1.jpg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/ST1.jpeg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/ST1.svg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/ST1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="sub-logo sub-1" data-name="WebFX"><img src="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/ST2.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/ST2.jpg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/ST2.jpeg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/ST2.svg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/ST2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        </div>
+    </div>
+    <div class="layer-logo"><img src="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/MT.png" alt="Main Logo" class="main-logo" data-fb="https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/MT.jpg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/MT.jpeg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/MT.svg|https://raw.githubusercontent.com/lynx1097/Zombie-Grid-Game/main/screenshots/Banner/MT.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+    <div class="status-badge badge-live"><span class="badge-dot"></span>Live</div>
+    <div class="action-buttons">
+        <a class="action-btn btn-live" href="https://lynx1097.github.io/Zombie-Grid-Game/" target="_blank" rel="noopener noreferrer">Live</a>
+        <a class="action-btn btn-github" href="https://github.com/lynx1097/Zombie-Grid-Game/" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+</div>
+
+<div class="tech-banner layout-left" style="--theme-color-1: rgba(0, 245, 255, 1.00); --theme-color-2: rgba(255, 0, 110, 1.00); --banner-font: Ubuntu , sans-serif;">
+    <div class="banner-shell">
+        <div class="glass-overlay"></div>
+        <div class="noise-layer"></div>
+        <div class="shine-sweep"></div>
+        <div class="layer-screenshots">
+            <div class="screenshot-card shot-0" style="right:14px; top:-10px; z-index:1;"><img src="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S1.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S1.jpg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S1.jpeg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S1.svg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="screenshot-card shot-1" style="right:100px; top:-30px; z-index:2;"><img src="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S2.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S2.jpg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S2.jpeg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S2.svg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="screenshot-card shot-2" style="right:186px; top:-15px; z-index:1;"><img src="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S3.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S3.jpg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S3.jpeg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S3.svg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/S3.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        </div>
+    </div>
+    <div class="banner-content">
+        <h2>Hangman</h2>
+        <p class="tagline">A wide stack implementation of the famous Game</p>
+        <div class="layer-subtech">
+            <div class="sub-logo sub-0" data-name="Laravel"><img src="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST1.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST1.jpg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST1.jpeg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST1.svg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="sub-logo sub-1" data-name="Vue.js"><img src="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST2.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST2.jpg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST2.jpeg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST2.svg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="sub-logo sub-2" data-name="Swagger"><img src="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST3.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST3.jpg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST3.jpeg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST3.svg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST3.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="sub-logo sub-3" data-name="MySQL"><img src="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST4.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST4.jpg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST4.jpeg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST4.svg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/ST4.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        </div>
+    </div>
+    <div class="layer-logo"><img src="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/MT.png" alt="Main Logo" class="main-logo" data-fb="https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/MT.jpg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/MT.jpeg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/MT.svg|https://raw.githubusercontent.com/lynx1097/Hangman-Web-App/main/screenshots/Banner/MT.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+    <div class="status-badge badge-live"><span class="badge-dot"></span>Live</div>
+    <div class="action-buttons">
+        <a class="action-btn btn-live" href="https://lynx1097.github.io/Hangman-Web-App/" target="_blank" rel="noopener noreferrer">Live</a>
+        <a class="action-btn btn-github" href="https://github.com/lynx1097/Hangman-Web-App/" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+</div>
+
+<div class="tech-banner layout-left" style="--theme-color-1: rgba(107, 114, 128, 1.00); --theme-color-2: rgba(31, 41, 55, 1.00); --banner-font: &#39;Ubuntu&#39;">
+    <div class="banner-shell">
+        <div class="glass-overlay"></div>
+        <div class="noise-layer"></div>
+        <div class="shine-sweep"></div>
+        <div class="layer-screenshots">
+            <div class="screenshot-card shot-0" style="right:14px; top:-10px; z-index:1;"><img src="https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S1.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S1.jpg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S1.jpeg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S1.svg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="screenshot-card shot-1" style="right:100px; top:-30px; z-index:2;"><img src="https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S2.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S2.jpg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S2.jpeg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S2.svg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="screenshot-card shot-2" style="right:186px; top:-15px; z-index:1;"><img src="https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S3.png" alt="Screenshot" data-fb="https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S3.jpg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S3.jpeg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S3.svg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/S3.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        </div>
+    </div>
+    <div class="banner-content">
+        <h2>Demolition Run</h2>
+        <p class="tagline">A Terminal Fun simple game written in Pure C++</p>
+        <div class="layer-subtech">
+            <div class="sub-logo sub-0" data-name="Emscripten"><img src="https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/ST1.png" alt="Subtech" data-fb="https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/ST1.jpg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/ST1.jpeg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/ST1.svg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/ST1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        </div>
+    </div>
+    <div class="layer-logo"><img src="https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/MT.png" alt="Main Logo" class="main-logo" data-fb="https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/MT.jpg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/MT.jpeg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/MT.svg|https://raw.githubusercontent.com/lynx1097/Terminal-Platformer/main/screenshots/Banner/MT.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+    <div class="status-badge badge-live"><span class="badge-dot"></span>Live</div>
+    <div class="action-buttons">
+        <a class="action-btn btn-live" href="https://lynx1097.github.io/Terminal-Platformer/" target="_blank" rel="noopener noreferrer">Live</a>
+        <a class="action-btn btn-github" href="https://github.com/lynx1097/Terminal-Platformer/" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+</div>
+
+<div class="tech-banner layout-left" style="--theme-color-1: rgba(6, 182, 212, 1.00); --theme-color-2: rgba(59, 130, 246, 1.00); --banner-font: &#39;Ubuntu&#39;">
+    <div class="banner-shell">
+        <div class="glass-overlay"></div>
+        <div class="noise-layer"></div>
+        <div class="shine-sweep"></div>
+    </div>
+    <div class="banner-content">
+        <h2>Cube-Lab</h2>
+        <p class="tagline">A PyQT Based Desktop App.</p>
+        <div class="layer-subtech">
+            <div class="sub-logo sub-0" data-name="PyVTK"><img src="./Resources/Cube-Lab/ST1.png" alt="Subtech" data-fb="./Resources/Cube-Lab/ST1.jpg|./Resources/Cube-Lab/ST1.jpeg|./Resources/Cube-Lab/ST1.svg|./Resources/Cube-Lab/ST1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="sub-logo sub-1" data-name="Qscintilla"><img src="./Resources/Cube-Lab/ST2.png" alt="Subtech" data-fb="./Resources/Cube-Lab/ST2.jpg|./Resources/Cube-Lab/ST2.jpeg|./Resources/Cube-Lab/ST2.svg|./Resources/Cube-Lab/ST2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="sub-logo sub-2" data-name="Gemini API"><img src="./Resources/Cube-Lab/ST3.png" alt="Subtech" data-fb="./Resources/Cube-Lab/ST3.jpg|./Resources/Cube-Lab/ST3.jpeg|./Resources/Cube-Lab/ST3.svg|./Resources/Cube-Lab/ST3.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        </div>
+    </div>
+    <div class="layer-logo"><img src="./Resources/Cube-Lab/MT.png" alt="Main Logo" class="main-logo" data-fb="./Resources/Cube-Lab/MT.jpg|./Resources/Cube-Lab/MT.jpeg|./Resources/Cube-Lab/MT.svg|./Resources/Cube-Lab/MT.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+    <div class="status-badge badge-wip"><span class="badge-dot"></span>Work In Progress</div>
+</div>
+
+<div class="tech-banner layout-left" style="--theme-color-1: rgba(213, 7, 7, 1.00); --theme-color-2: rgba(255, 235, 10, 1.00); --banner-font: &#39;Ubuntu&#39;">
+    <div class="banner-shell">
+        <div class="glass-overlay"></div>
+        <div class="noise-layer"></div>
+        <div class="shine-sweep"></div>
+        <div class="layer-screenshots">
+            <div class="screenshot-card shot-0" style="right:14px; top:-10px; z-index:1;"><img src="./Resources/GIUW/S1.png" alt="Screenshot" data-fb="./Resources/GIUW/S1.jpg|./Resources/GIUW/S1.jpeg|./Resources/GIUW/S1.svg|./Resources/GIUW/S1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="screenshot-card shot-1" style="right:100px; top:-30px; z-index:2;"><img src="./Resources/GIUW/S2.png" alt="Screenshot" data-fb="./Resources/GIUW/S2.jpg|./Resources/GIUW/S2.jpeg|./Resources/GIUW/S2.svg|./Resources/GIUW/S2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="screenshot-card shot-2" style="right:186px; top:-15px; z-index:1;"><img src="./Resources/GIUW/S3.png" alt="Screenshot" data-fb="./Resources/GIUW/S3.jpg|./Resources/GIUW/S3.jpeg|./Resources/GIUW/S3.svg|./Resources/GIUW/S3.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        </div>
+    </div>
+    <div class="banner-content">
+        <h2>GIU Wasalny</h2>
+        <p class="tagline">A Fullstack Microservice Architected Web Application for Carpooling</p>
+        <div class="layer-subtech">
+            <div class="sub-logo sub-0" data-name="nestjs"><img src="./Resources/GIUW/ST1.png" alt="Subtech" data-fb="./Resources/GIUW/ST1.jpg|./Resources/GIUW/ST1.jpeg|./Resources/GIUW/ST1.svg|./Resources/GIUW/ST1.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="sub-logo sub-1" data-name="PrismaDB"><img src="./Resources/GIUW/ST2.png" alt="Subtech" data-fb="./Resources/GIUW/ST2.jpg|./Resources/GIUW/ST2.jpeg|./Resources/GIUW/ST2.svg|./Resources/GIUW/ST2.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="sub-logo sub-2" data-name="Kafka"><img src="./Resources/GIUW/ST3.png" alt="Subtech" data-fb="./Resources/GIUW/ST3.jpg|./Resources/GIUW/ST3.jpeg|./Resources/GIUW/ST3.svg|./Resources/GIUW/ST3.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+            <div class="sub-logo sub-3" data-name="GraphQL"><img src="./Resources/GIUW/ST4.png" alt="Subtech" data-fb="./Resources/GIUW/ST4.jpg|./Resources/GIUW/ST4.jpeg|./Resources/GIUW/ST4.svg|./Resources/GIUW/ST4.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+        </div>
+    </div>
+    <div class="layer-logo"><img src="./Resources/GIUW/MT.png" alt="Main Logo" class="main-logo" data-fb="./Resources/GIUW/MT.jpg|./Resources/GIUW/MT.jpeg|./Resources/GIUW/MT.svg|./Resources/GIUW/MT.webp" onerror="var f=(this.getAttribute('data-fb')||'').split('|').filter(Boolean);if(f.length){this.setAttribute('data-fb',f.slice(1).join('|'));this.src=f[0];}else{this.onerror=null;}"></div>
+    <div class="status-badge badge-wip"><span class="badge-dot"></span>Repolish In Progress</div>
+    <div class="action-buttons">
+<!---       <a class="action-btn btn-live" href="&#39;Live Here&#39;" target="_blank" rel="noopener noreferrer">Live</a>--> 
+        <a class="action-btn btn-github" href="https://github.com/batool612/GIU-Wasalny-Frontend" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+</div>
+<!-- ======              ORIGINAL BANNERS END                      ====== -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <!-- FOOTER / CONTACT                                                  -->
+  <!-- 🔧 EDIT: email + social links below.                              -->
+  <!-- ================================================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <span class="kicker">./contact --me</span>
+      <h2 class="sec-title">Let's build something together.</h2>
+      <!-- 🔧 EDIT: your real profile URLs -->
+      <ul class="socials">
+        <li><a href="https://github.com/lynx1097" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:abdelrahman1097@proton.me">Email</a></li>
+      </ul>
+      <p class="copyright">
+        <span class="mono">&copy; <span id="year">2026</span> Lynx</span> 
+      </p>
+    </div>
+  </footer>
+
+  <!-- ================================================================ -->
+  <!-- SCRIPTS  (scroll-fade photo, responsive banner scaling, reveals)  -->
+  <!-- ================================================================ -->
+  <script>
+    // ---- 1. Update footer year automatically --------------------------
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---- 2. Mobile nav toggle ----------------------------------------
+    var toggle = document.querySelector('.nav-toggle');
+    var links  = document.querySelector('.nav-links');
+    toggle.addEventListener('click', function(){
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+      toggle.textContent = open ? '✕' : '☰';
+    });
+    // close menu after tapping a link
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        links.classList.remove('open'); toggle.textContent='☰'; toggle.setAttribute('aria-expanded',false);
+      });
+    });
+
+    // ---- 3. Seamless marquee: clone the track contents once -----------
+    var track = document.getElementById('marqueeTrack');
+    track.innerHTML += track.innerHTML;   // duplicate for the -50% loop
+
+    // ---- 4. HERO PHOTO scroll-fade -----------------------------------
+    // Fades the photo from opacity 1 -> 0 over the first ~70% of viewport.
+    var heroPhoto = document.getElementById('heroPhoto');
+    function fadeHero(){
+      var fadeOver = window.innerHeight * 0.7;          // distance to fully fade
+      var f = 1 - Math.min(1, window.scrollY / fadeOver);
+      heroPhoto.style.setProperty('--hero-fade', f.toFixed(3));
+      // gentle parallax drift while fading
+      heroPhoto.style.transform = 'translateY(' + (window.scrollY * 0.06).toFixed(1) + 'px)';
+    }
+    fadeHero();
+    window.addEventListener('scroll', fadeHero, { passive:true });
+
+    // ---- 5. RESPONSIVE BANNER SCALING --------------------------------
+    // Your banners are a fixed 900px wide. Instead of editing their CSS,
+    // we scale the whole stage down to fit narrow screens, and reserve the
+    // correct (scaled) height so nothing overlaps below.
+    var fit   = document.querySelector('.banners-fit');
+    var stage = document.getElementById('bannersStage');
+    var NATURAL_W = 900;
+    function fitBanners(){
+      // reset to natural size so we can measure it accurately
+      stage.style.transform = 'none';
+      fit.style.height = 'auto';
+      fit.style.overflow = 'visible';
+      // available content width (clientWidth includes padding -> subtract it)
+      var cs = getComputedStyle(fit);
+      var pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+      var avail = fit.clientWidth - pad;
+      var scale = Math.min(1, avail / NATURAL_W);
+      if (scale < 1){
+        var naturalH = stage.offsetHeight;            // unscaled height
+        stage.style.transform = 'scale(' + scale + ')';
+        fit.style.height = Math.ceil(naturalH * scale) + 'px'; // reserve scaled height
+        fit.style.overflow = 'hidden';                // clip the 900px layout remainder
+      }
+    }
+    // run after layout & images settle; also on resize
+    window.addEventListener('load', fitBanners);
+    window.addEventListener('resize', fitBanners);
+    if (window.ResizeObserver){ new ResizeObserver(fitBanners).observe(fit); }
+    fitBanners();
+
+    // ---- 6. Scroll-reveal for sections -------------------------------
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    }, { threshold:0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  </script>
+</body>
+</html>
