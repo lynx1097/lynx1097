@@ -52,13 +52,13 @@ The code is the easy part. Here's what I actually bring to a team:
 | 🧱 | **Resilience** | I don't bounce off hard problems. I debug, thoroughly research, and grind until it works. |
 | 🔍 | **Attention to Detail** | Clean architecture, edge cases, and the small polish that separates *"it works"* from *"it's done well."* |
 
-# A full list of my technical skillset is available [here](https://lynx1097.github.io#skills) !
+# A full list of my technical skillset is available [here](https://lynx1097.github.io/lynx1097#skills) !
 
 ## `$ ls ~/toolbox`
 
 <div >
   <img src="./Resources/icons.svg" width=70%alt="Tech stack"/>
-  <a href="https://lynx1097.github.io">
+  <a href="https://lynx1097.github.io/lynx1097">
     <img src="./Resources/portfolio.svg" width= 85% alt="Explore my portfolio"/>
   </a>
 
