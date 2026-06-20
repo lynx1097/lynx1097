@@ -61,6 +61,9 @@ The code is the easy part. Here's what I actually bring to a team:
   <a href="https://lynx1097.github.io/lynx1097">
     <img src="./Resources/portfolio.svg" width= 85% alt="Explore my portfolio"/>
   </a>
+  <a href="https://www.behance.net/lynx97">
+    <img src="./Resources/Designs.svg" width= 85% alt="Explore my Designs"/>
+  </a>
 
 </div>
 
@@ -82,10 +85,6 @@ The code is the easy part. Here's what I actually bring to a team:
   <a href="https://www.linkedin.com/in/afadel97/"><img src="./Resources/linkedIn.svg" width=50% alt="LinkedIn"/></a>
   <a href="mailto:abdelrahman1097@proton.me"><img src="./Resources/mail.svg" width=50% alt="Email"/></a>
   <a href="https://dev.to/lynx97"><img src="./Resources/Dev.svg" width=50% alt="Email"/></a>
-
-  <br/><br/>
-
-  
 
 </div>
 
